@@ -83,4 +83,26 @@ public class ValidateSaId {
         int citizenshipDigit = Integer.parseInt(idNumber.substring(10, 11));
         return citizenshipDigit == 0 || citizenshipDigit == 1;
     }
+    private static boolean isValidChecksum(String idNumber) {
+        int sum = 0;
+        for (int i = 0; i < 12; i++) {
+            int digit = Character.getNumericValue(idNumber.charAt(i));
+            // Multiply even positions by 2
+            int value = (i % 2 == 0) ? digit * 2 : digit;
+            // If the multiplication is > 9, sum the digits
+            sum += (value > 9) ? (value - 9) : value;
+        }
+
+        int checksumDigit = Character.getNumericValue(idNumber.charAt(12));
+        int calculatedChecksum = (10 - (sum % 10)) % 10;
+
+        if (checksumDigit != calculatedChecksum) {
+            System.out.println("✗ Checksum failed - expected " + calculatedChecksum + " but found " + checksumDigit);
+            return false;
+        }
+
+        System.out.println("✓ Valid checksum");
+        return true;
+    }
+}
 
