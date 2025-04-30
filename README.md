@@ -27,13 +27,13 @@ A Kotlin/Java library for validating South African ID numbers according to offic
 ## 🔍 Validation Rules
 Validates all components of SA ID format YYMMDDSSSSCAZ:
 
-Component	Validation Rule
-Length	Exactly 13 digits
-Format	Only numeric characters (0-9)
-Date (YYMMDD)	Valid calendar date with leap year support
-Gender (SSSS)	0000-4999 (F), 5000-9999 (M)
-Citizenship (C)	0 (citizen) or 1 (permanent resident)
-Checksum (Z)	Valid Luhn algorithm checksum
+Component	Validation Rule, 
+Length	Exactly 13 digits, 
+Format	Only numeric characters (0-9), 
+Date (YYMMDD)	Valid calendar date with leap year support, 
+Gender (SSSS)	0000-4999 (F), 5000-9999 (M), 
+Citizenship (C)	0 (citizen) or 1 (permanent resident), 
+Checksum (Z)	Valid Luhn algorithm checksum, 
 
 ## 🧪 Testing
 Run tests with:
