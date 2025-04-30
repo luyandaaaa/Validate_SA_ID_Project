@@ -44,6 +44,14 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+    @Test
+    void testNonNumericIdNumber() {
+        System.out.println("\n=== Testing Non-Numeric ID Number ===");
+        String nonNumericId = "20010A4800086";
+        boolean result = ValidateSaId.isIdNumberValid(nonNumericId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
 
 
     
