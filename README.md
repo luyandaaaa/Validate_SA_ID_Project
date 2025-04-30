@@ -4,7 +4,7 @@
 [![Kotlin](https://img.shields.io/badge/kotlin-1.8.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-A Kotlin/Java library for validating South African ID numbers according to official specifications.
+A Java library for validating South African ID numbers according to official specifications.
 
 ## 📋 Table of Contents
 
