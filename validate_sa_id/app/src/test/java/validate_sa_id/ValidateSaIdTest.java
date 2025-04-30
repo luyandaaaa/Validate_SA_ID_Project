@@ -15,4 +15,9 @@ class ValidateSaIdTest {
         String validId = "2909035800085";
         assertTrue(ValidateSaId.isIdNumberValid(validId));
     }
+
+    @Test
+    void isInValidCitizenship() {
+        assertTrue(ValidateSaId.isIdNumberValid("2001014800286")); // invalid citizenship digit
+    }
 }
