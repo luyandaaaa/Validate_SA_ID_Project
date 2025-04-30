@@ -77,8 +77,23 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+    @Test
+    void testValidFemaleIdNumber() {
+        System.out.println("\n=== Testing Valid Female ID Number ===");
+        String femaleId = "2001010000086"; // Gender digits 0000
+        boolean result = ValidateSaId.isIdNumberValid(femaleId);
+        System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
+        assertTrue(result);
+    }
 
-
-
-    
+    @Test
+    void testValidMaleIdNumber() {
+        System.out.println("\n=== Testing Valid Male ID Number ===");
+        String maleId = "2001015000086"; // Gender digits 5000
+        boolean result = ValidateSaId.isIdNumberValid(maleId);
+        System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
+        assertTrue(result);
+    }
 }
+
+
