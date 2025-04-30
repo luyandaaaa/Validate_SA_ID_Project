@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = "org.example.App"
+    mainClass = "validate_sa_id.ValidateSaId"
 }
 
 tasks.named<Test>("test") {
