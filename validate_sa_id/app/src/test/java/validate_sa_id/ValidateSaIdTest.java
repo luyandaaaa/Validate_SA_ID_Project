@@ -10,5 +10,9 @@ import validate_sa_id.ValidateSaId;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidateSaIdTest {
-    
+    @Test
+    public void testValidIdNumber() {
+        String validId = "2001014800086";
+        assertTrue(ValidateSaId.isIdNumberValid(validId));
+    }
 }
