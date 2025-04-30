@@ -79,4 +79,8 @@ public class ValidateSaId {
         System.out.printf("✓ Valid date: %02d/%02d/%02d (DD/MM/YY format)%n", day, month, year);
         return true;
     }
+    private static boolean isValidCitizenship(String idNumber) {
+        int citizenshipDigit = Integer.parseInt(idNumber.substring(10, 11));
+        return citizenshipDigit == 0 || citizenshipDigit == 1;
+    }
 
