@@ -48,9 +48,6 @@ public class ValidateSaId {
         int month = Integer.parseInt(dateStr.substring(2, 4));
         int day = Integer.parseInt(dateStr.substring(4, 6));
 
-        // We'll validate the date without making century assumptions
-        // Just ensure the date components form a valid date in any century
-
         // Validate month
         if (month < 1 || month > 12) {
             System.out.println("✗ Invalid month - must be between 01-12");

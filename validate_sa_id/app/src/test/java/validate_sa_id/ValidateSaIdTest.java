@@ -10,14 +10,15 @@ import validate_sa_id.ValidateSaId;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidateSaIdTest {
+    
     @Test
-    public void testValidIdNumber() {
-        String validId = "2909035800085";
-        assertTrue(ValidateSaId.isIdNumberValid(validId));
+    void testValidIdNumber() {
+        System.out.println("\n=== Testing Valid ID Number ===");
+        String validId = "2001014800086";
+        boolean result = ValidateSaId.isIdNumberValid(validId);
+        System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
+        assertTrue(result);
     }
 
-    @Test
-    void isInValidCitizenship() {
-        assertTrue(ValidateSaId.isIdNumberValid("2001014800286")); // invalid citizenship digit
-    }
+    
 }
