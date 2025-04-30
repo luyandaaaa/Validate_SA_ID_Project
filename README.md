@@ -2,9 +2,7 @@
 # South African ID Number Validator
 
 [![Kotlin](https://img.shields.io/badge/kotlin-1.8.0-blue.svg?logo=kotlin)](http://kotlinlang.org)
-[![Java CI](https://github.com/luyandaaaa/Validate_SA_ID_Project/actions/workflows/build.yml/badge.svg)](https://github.com/luyandaaaa/Validate_SA_ID_Project/actions/workflows/build.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Coverage Status](https://coveralls.io/repos/github/luyandaaaa/Validate_SA_ID_Project/badge.svg?branch=main)](https://coveralls.io/github/luyandaaaa/Validate_SA_ID_Project?branch=main)
 
 A Kotlin/Java library for validating South African ID numbers according to official specifications.
 
@@ -14,7 +12,6 @@ A Kotlin/Java library for validating South African ID numbers according to offic
 - [Usage](#-usage)
 - [Validation Rules](#-validation-rules)
 - [Testing](#-testing)
-- [Contributing](#-contributing)
 - [License](#-license)
 
 ## ✨ Features
@@ -27,7 +24,7 @@ A Kotlin/Java library for validating South African ID numbers according to offic
 - 🐛 Detailed error reporting
 - 🧪 100% test coverage
 
-🔍 Validation Rules
+## 🔍 Validation Rules
 Validates all components of SA ID format YYMMDDSSSSCAZ:
 
 Component	Validation Rule
@@ -38,10 +35,11 @@ Gender (SSSS)	0000-4999 (F), 5000-9999 (M)
 Citizenship (C)	0 (citizen) or 1 (permanent resident)
 Checksum (Z)	Valid Luhn algorithm checksum
 
-🧪 Testing
+## 🧪 Testing
 Run tests with:
 
 bash
 ./gradlew test
-📜 License
+
+## 📜 License
 Distributed under the MIT License. See LICENSE for more information.
