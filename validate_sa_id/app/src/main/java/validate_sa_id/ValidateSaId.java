@@ -4,5 +4,10 @@
 package validate_sa_id;
 
 public class ValidateSaId {
-    
+    public static boolean isIdNumberValid(String idNumber) {
+        if (idNumber.length() != 13) {
+            return false; 
+        }
+        return true; 
+    }
 }
