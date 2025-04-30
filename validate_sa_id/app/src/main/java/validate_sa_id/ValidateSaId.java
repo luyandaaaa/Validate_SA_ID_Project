@@ -10,4 +10,9 @@ public class ValidateSaId {
         }
         return true;
     }
+
+    private static boolean isValidCitizenship(String idNumber) {
+        int citizenshipDigit = Integer.parseInt(idNumber.substring(10, 11));
+        return citizenshipDigit == 0 || citizenshipDigit == 1;
+    }
 }
