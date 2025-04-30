@@ -52,6 +52,14 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+    @Test
+    void testInvalidDate() {
+        System.out.println("\n=== Testing Invalid Date ===");
+        String invalidDateId = "0013014800086"; // Invalid month 13
+        boolean result = ValidateSaId.isIdNumberValid(invalidDateId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
 
 
     
