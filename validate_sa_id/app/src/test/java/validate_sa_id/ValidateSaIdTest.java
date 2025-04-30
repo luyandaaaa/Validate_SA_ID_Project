@@ -20,5 +20,13 @@ class ValidateSaIdTest {
         assertTrue(result);
     }
 
+    @Test
+    void testNullInput() {
+        System.out.println("\n=== Testing Null Input ===");
+        boolean result = ValidateSaId.isIdNumberValid(null);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
+
     
 }
