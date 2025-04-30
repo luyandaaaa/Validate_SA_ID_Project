@@ -27,6 +27,24 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+    @Test
+    void testShortIdNumber() {
+        System.out.println("\n=== Testing Short ID Number ===");
+        String shortId = "200101480008";
+        boolean result = ValidateSaId.isIdNumberValid(shortId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
+
+    @Test
+    void testLongIdNumber() {
+        System.out.println("\n=== Testing Long ID Number ===");
+        String longId = "20010148000867";
+        boolean result = ValidateSaId.isIdNumberValid(longId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
+
 
     
 }
