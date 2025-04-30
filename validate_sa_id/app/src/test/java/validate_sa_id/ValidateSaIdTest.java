@@ -60,6 +60,24 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+    @Test
+    void testInvalidCitizenship() {
+        System.out.println("\n=== Testing Invalid Citizenship ===");
+        String invalidCitizenshipId = "2001014800286"; // Citizenship digit 2
+        boolean result = ValidateSaId.isIdNumberValid(invalidCitizenshipId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
+
+    @Test
+    void testInvalidChecksum() {
+        System.out.println("\n=== Testing Invalid Checksum ===");
+        String invalidChecksumId = "2001014800087"; // Should be 6
+        boolean result = ValidateSaId.isIdNumberValid(invalidChecksumId);
+        System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
+        assertFalse(result);
+    }
+
 
 
     
