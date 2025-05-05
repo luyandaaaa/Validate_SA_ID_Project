@@ -3,7 +3,7 @@ package validate_sa_id;
 public class ValidateSaId {
     public static boolean isIdNumberValid(String idNumber) {
         System.out.println("\nValidating ID Number: " + idNumber);
-        
+
         // Check length
         if (idNumber == null || idNumber.length() != 13) {
             System.out.println("✗ Invalid length - ID number must be exactly 13 digits");
@@ -22,9 +22,11 @@ public class ValidateSaId {
         }
 
         // Check gender digits (SSSS)
-        int genderDigits = Integer.parseInt(idNumber.substring(6, 10));
-        if (genderDigits < 0 || genderDigits > 9999) {
-            System.out.println("✗ Invalid gender digits - must be between 0000-9999");
+        try {
+            String gender = getGender(idNumber);
+            System.out.println("✓ Valid gender digits - " + gender);
+        } catch (IllegalArgumentException e) {
+            System.out.println("✗ " + e.getMessage());
             return false;
         }
 
@@ -43,6 +45,16 @@ public class ValidateSaId {
         System.out.println("✓ Valid South African ID number");
         return true;
     }
+
+    public static String getGender(String id) {
+        if (id.length() != 13 || !id.matches("\\d{13}")) {
+            throw new IllegalArgumentException("Invalid ID number");
+        }
+
+        int genderCode = Integer.parseInt(id.substring(6, 10));
+        return genderCode < 5000 ? "Female" : "Male";
+    }
+
     private static boolean isValidDate(String dateStr) {
         int year = Integer.parseInt(dateStr.substring(0, 2));
         int month = Integer.parseInt(dateStr.substring(2, 4));
@@ -76,25 +88,42 @@ public class ValidateSaId {
         System.out.printf("✓ Valid date: %02d/%02d/%02d (DD/MM/YY format)%n", day, month, year);
         return true;
     }
+
     private static boolean isValidCitizenship(String idNumber) {
         int citizenshipDigit = Integer.parseInt(idNumber.substring(10, 11));
         return citizenshipDigit == 0 || citizenshipDigit == 1;
     }
+
     private static boolean isValidChecksum(String idNumber) {
-        int sum = 0;
-        for (int i = 0; i < 12; i++) {
-            int digit = Character.getNumericValue(idNumber.charAt(i));
-            // Multiply even positions by 2
-            int value = (i % 2 == 0) ? digit * 2 : digit;
-            // If the multiplication is > 9, sum the digits
-            sum += (value > 9) ? (value - 9) : value;
+        int sumOdd = 0;
+        // Step 1: Sum digits at odd positions (0-based): 0,2,4,6,8,10
+        for (int i = 0; i < 12; i += 2) {
+            sumOdd += Character.getNumericValue(idNumber.charAt(i));
         }
 
-        int checksumDigit = Character.getNumericValue(idNumber.charAt(12));
-        int calculatedChecksum = (10 - (sum % 10)) % 10;
+        // Step 2: Concatenate even-position digits and multiply by 2
+        StringBuilder evenDigits = new StringBuilder();
+        for (int i = 1; i < 12; i += 2) {
+            evenDigits.append(idNumber.charAt(i));
+        }
+        int evenNumber = Integer.parseInt(evenDigits.toString()) * 2;
 
-        if (checksumDigit != calculatedChecksum) {
-            System.out.println("✗ Checksum failed - expected " + calculatedChecksum + " but found " + checksumDigit);
+        // Step 3: Sum digits of evenNumber
+        int sumEven = 0;
+        for (char c : String.valueOf(evenNumber).toCharArray()) {
+            sumEven += Character.getNumericValue(c);
+        }
+
+        // Step 4: Total sum
+        int total = sumOdd + sumEven;
+
+        // Step 5: Calculate check digit
+        int calculatedCheckDigit = (10 - (total % 10)) % 10;
+        int actualCheckDigit = Character.getNumericValue(idNumber.charAt(12));
+
+        if (actualCheckDigit != calculatedCheckDigit) {
+            System.out
+                    .println("✗ Checksum failed - expected " + calculatedCheckDigit + " but found " + actualCheckDigit);
             return false;
         }
 
@@ -102,4 +131,3 @@ public class ValidateSaId {
         return true;
     }
 }
-

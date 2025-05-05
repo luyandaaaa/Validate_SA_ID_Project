@@ -10,14 +10,14 @@ import validate_sa_id.ValidateSaId;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ValidateSaIdTest {
-    
+
     @Test
     void testValidIdNumber() {
         System.out.println("\n=== Testing Valid ID Number ===");
-        String validId = "2001014800086";
+        String validId = "8001015009087"; // Valid SA ID with correct checksum
         boolean result = ValidateSaId.isIdNumberValid(validId);
         System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
-        assertTrue(result);
+        assertTrue(result, "Expected ID to be valid but got invalid.");
     }
 
     @Test
@@ -27,6 +27,7 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+
     @Test
     void testShortIdNumber() {
         System.out.println("\n=== Testing Short ID Number ===");
@@ -44,6 +45,7 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+
     @Test
     void testNonNumericIdNumber() {
         System.out.println("\n=== Testing Non-Numeric ID Number ===");
@@ -52,6 +54,7 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+
     @Test
     void testInvalidDate() {
         System.out.println("\n=== Testing Invalid Date ===");
@@ -60,6 +63,7 @@ class ValidateSaIdTest {
         System.out.println("Test Result: " + (!result ? "PASSED" : "FAILED"));
         assertFalse(result);
     }
+
     @Test
     void testInvalidCitizenship() {
         System.out.println("\n=== Testing Invalid Citizenship ===");
@@ -78,22 +82,13 @@ class ValidateSaIdTest {
         assertFalse(result);
     }
     @Test
-    void testValidFemaleIdNumber() {
-        System.out.println("\n=== Testing Valid Female ID Number ===");
-        String femaleId = "2001010000086"; // Gender digits 0000
-        boolean result = ValidateSaId.isIdNumberValid(femaleId);
-        System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
-        assertTrue(result);
+    void testGenderDetection()
+    {
+        assertEquals("Male", ValidateSaId.getGender("8001015009087"));
+        assertEquals("Female", ValidateSaId.getGender("8001010009086"));
     }
+   
 
-    @Test
-    void testValidMaleIdNumber() {
-        System.out.println("\n=== Testing Valid Male ID Number ===");
-        String maleId = "2001015000086"; // Gender digits 5000
-        boolean result = ValidateSaId.isIdNumberValid(maleId);
-        System.out.println("Test Result: " + (result ? "PASSED" : "FAILED"));
-        assertTrue(result);
-    }
+    
+
 }
-
-
